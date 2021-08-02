@@ -29,17 +29,42 @@ exports.create = (req, res) => {
       });
     });
 };
+
 //getting and return all user/ single user
 exports.find = (req, res) => {
-  Userdb.find()
-    .then((user) => {
-      res.send(user);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "some error occurred while getting users",
+
+    //for getting single user 
+  if (req.query.id) {
+    const id = req.query.id;
+    Userdb.findById(id)
+      .then((data) => {
+        if (!data) {
+          res.status(404).send({ message: "not found user with id" + id });
+        } else {
+          res.send(data);
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message ||
+            "some error occurred while retrieving user id with " + id,
+        });
       });
-    });
+
+  } 
+    //getting all users
+  else {
+    Userdb.find()
+      .then((user) => {
+        res.send(user);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "some error occurred while getting users",
+        });
+      });
+  }
 };
 
 //update a new identified user by userid
@@ -49,6 +74,7 @@ exports.update = (req, res) => {
       Message: "Data to update cannot be Empty",
     });
   }
+
   const id = req.params.id;
   Userdb.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then((data) => {
@@ -67,6 +93,7 @@ exports.update = (req, res) => {
       });
     });
 };
+
 //delete a user by user id
 exports.delete = (req, res) => {
   const id = req.params.id;
