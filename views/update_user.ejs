@@ -20,11 +20,11 @@
         <div class="new_user">
           <div class="form-group">
             <label for="name" class="text-light">Name</label>
-            <input type="hidden" name="id" value="" />
+            <input type="hidden" name="id" value="<%= user._id%>" />
             <input
               type="text"
               name="name"
-              value=""
+              value="<%= user.name%>"
               placeholder="Enter your name"
             />
           </div>
@@ -34,7 +34,7 @@
             <input
               type="text"
               name="email"
-              value=""
+              value="<%= user.email %>"
               placeholder="Enter your Email"
             />
           </div>
@@ -42,11 +42,11 @@
           <div class="form-group">
             <label for="gender" class="text-light">Gender</label>
             <div class="radio inline">
-              <input type="radio" id="radio-2" name="gender" value="Male" />
+              <input type="radio" id="radio-2" name="gender" value="Male" <% = user.gender =='Male'? 'checked':"%> />
               <label for="radio-2" class="radio-label">Male</label>
             </div>
             <div class="radio inline">
-              <input type="radio" id="radio-3" name="gender" value="Female" />
+              <input type="radio" id="radio-3" name="gender" value="Female" <% = user.gender =='Female'? 'checked':"%>/>
               <label for="radio-3" class="radio-label">Female</label>
             </div>
           </div>

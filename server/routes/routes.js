@@ -13,13 +13,13 @@ route.get("/", services.homeRoutes);
  * @description for add user
  * @method GET/add-user
  */
-route.get("/add-user", services.add_user);
+route.get("/add_user", services.add_user);
 
 /**
  * @description for update user
  * @method GET/update-user
  */
-route.get("/update-user", services.update_user);
+route.get("/update_user", services.update_user);
 
 //API
 route.post("/api/users", controller.create);

@@ -7,8 +7,7 @@ var schema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
-    unique: true,
+    required: true
   },
   gender: {
     type: String,
