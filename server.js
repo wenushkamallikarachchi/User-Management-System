@@ -17,7 +17,7 @@ app.use(bodyparser.urlencoded({ extended: true }));
 
 // set view engine
 app.set("view engine", "ejs");
-//app.set("views",path.resolve(__dirname,"views"))
+
 
 //load assets
 app.use("/css", express.static(path.resolve(__dirname, "assets/css")));
@@ -27,6 +27,16 @@ app.use("/js", express.static(path.resolve(__dirname, "assets/js")));
 app.get("/", (req, res) => {
   //res.send("Crud Application with angular");
   res.render("index");
+});
+
+app.get("/add-user", (req, res) => {
+  //res.send("show add user working");
+  res.render("add_user");
+});
+
+app.get("/update-user", (req, res) => {
+  //res.send("show update user working");
+  res.render("update_user");
 });
 
 app.listen(PORT, () => {
